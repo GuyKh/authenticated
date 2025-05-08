@@ -14,6 +14,7 @@ import voluptuous as vol
 import yaml
 
 import homeassistant.helpers.config_validation as cv
+from homeassistant.components.persistent_notification import create
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.helpers.entity import Entity
 
@@ -407,7 +408,6 @@ class IPData:
 
     def notify(self, hass):
         """Create persistant notification."""
-        notify = hass.components.persistent_notification.create
         if self.country is not None:
             country = "**Country:**   {}".format(self.country)
         else:
@@ -445,4 +445,4 @@ class IPData:
             city,
             last_used_at.replace("T", " "),
         )
-        notify(message, title="New successful login", notification_id=self.ip_address)
+        create(hass, message, title="New successful login", notification_id=self.ip_address)
