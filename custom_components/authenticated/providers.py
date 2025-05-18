@@ -1,4 +1,5 @@
 """Providers"""
+
 import logging
 import requests
 from . import AuthenticatedBaseException
