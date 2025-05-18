@@ -4,6 +4,7 @@ about successful logins to Home Assistant.
 For more details about this component, please refer to the documentation at
 https://github.com/custom-components/authenticated
 """
+
 from datetime import datetime, timedelta
 import json
 import logging
@@ -445,4 +446,6 @@ class IPData:
             city,
             last_used_at.replace("T", " "),
         )
-        create(hass, message, title="New successful login", notification_id=self.ip_address)
+        create(
+            hass, message, title="New successful login", notification_id=self.ip_address
+        )
